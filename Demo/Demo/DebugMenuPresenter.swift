@@ -21,7 +21,12 @@ struct DebugMenuPresenter {
     var currentFrame: CGRect
 
     /// threshold to open or close menu. The value is in 0...1
-    var threshold: CGFloat = 0.3
+    var threshold: CGFloat = 0.1
+    
+    /// Either debug menu is visible or not
+    var isShown: Bool {
+        return currentFrame.minX > lowerLimitFrame.minX
+    }
     
     /// the x point that you start dragging.
     private(set) var beganLocationX: CGFloat = 0
