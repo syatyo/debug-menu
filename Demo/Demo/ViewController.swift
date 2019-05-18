@@ -30,11 +30,11 @@ class ViewController: UIViewController {
         containerView.addSubview(debugViewController.view)
         debugViewController.didMove(toParent: self)
         
-//        let debugMenuInitialFrame = CGRect(x: containerView.frame.minX - containerView.frame.size.width,
-//                                           y: containerView.frame.minY,
-//                                           width: containerView.frame.width,
-//                                           height: containerView.frame.height)
-        debugViewController.view.frame = containerView.frame
+        let debugMenuInitialFrame = CGRect(x: containerView.frame.minX - containerView.frame.size.width,
+                                           y: containerView.frame.minY,
+                                           width: containerView.frame.width,
+                                           height: containerView.frame.height)
+        debugViewController.view.frame = debugMenuInitialFrame
         debugViewController.panGestureDelegate = self
     }
 }

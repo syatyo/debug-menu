@@ -12,6 +12,7 @@ struct DebugMenuPresenter {
     let sourceFrame: CGRect
     let sourceSize: CGSize
     private(set) var currentFrame: CGRect
+    private(set) var beganLocation: CGPoint = .zero
     
     init(sourceSize: CGSize) {
         self.sourceSize = sourceSize
@@ -21,14 +22,21 @@ struct DebugMenuPresenter {
         self.currentFrame = sourceFrame
     }
     
+    mutating func began(in location: CGPoint) {
+        beganLocation = location
+    }
+    
     mutating func change(in location: CGPoint) {
+        let distance: CGFloat = (beganLocation.x - location.x) * -1
+        let destinationX = currentFrame.minX + distance
+        
         let minX: CGFloat = {
-            if currentFrame.minX + location.x < sourceFrame.minX {
-                return currentFrame.minX
-            } else if currentFrame.minX + location.x > sourceFrame.maxX {
+            if destinationX < sourceFrame.minX {
+                return sourceFrame.minX
+            } else if destinationX > sourceFrame.maxX {
                 return 0
             } else {
-                 return currentFrame.minX + location.x
+                 return destinationX
             }
         }()
         
@@ -36,6 +44,7 @@ struct DebugMenuPresenter {
                                    y: currentFrame.minY,
                                    width: currentFrame.width,
                                    height: currentFrame.height)
+        print(currentFrame)
     }
     
 }

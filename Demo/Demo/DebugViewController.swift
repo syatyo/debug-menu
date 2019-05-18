@@ -11,21 +11,26 @@ import UIKit
 class DebugViewController: UITableViewController {
     
     private var edgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer!
+    private var panGestureRecognizer: UIPanGestureRecognizer!
     weak var panGestureDelegate: UIGestureRecognizerDelegate?
     
-    private var sourceFrame: CGRect!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         view.alpha = 0.5
         
         edgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self,
-                                                                    action: #selector(edgePanGestureRecognizerDidPanned(recognizer:)))
+                                                                    action: #selector(panGestureRecognizerDidPanned(recognizer:)))
         edgePanGestureRecognizer.edges = .left
         edgePanGestureRecognizer.delegate = panGestureDelegate
         parent?.view.addGestureRecognizer(edgePanGestureRecognizer)
         
-        sourceFrame = view.frame
+        panGestureRecognizer = UIPanGestureRecognizer(target: self,
+                                                      action: #selector(panGestureRecognizerDidPanned(recognizer:)))
+        panGestureRecognizer.delegate = panGestureDelegate
+        parent?.view.addGestureRecognizer(panGestureRecognizer)
+        
+        presenter = DebugMenuPresenter(sourceSize: view.bounds.size)
     }
 
     // MARK: - Table view data source
@@ -40,21 +45,20 @@ class DebugViewController: UITableViewController {
         return 0
     }
 
-    @objc private func edgePanGestureRecognizerDidPanned(recognizer: UIScreenEdgePanGestureRecognizer) {
-        
-        let minimumMinX = max(self.view.frame.minX, 0)
-        let maximumMinMinX = min(sourceFrame.size.width, self.view.frame.minY)
+    private var presenter: DebugMenuPresenter!
+    
+    @objc private func panGestureRecognizerDidPanned(recognizer: UIScreenEdgePanGestureRecognizer) {
         
         switch recognizer.state {
-        case .changed:
-            let transition = recognizer.translation(in: view)
+        case .began:
             let location = recognizer.location(in: view)
+            presenter.began(in: location)
+        case .changed:
+            let location = recognizer.location(in: view)
+            presenter.change(in: location)
             
             UIView.animate(withDuration: 0.1) {
-                self.view.frame = CGRect(x: self.view.frame.minX + location.x,
-                                         y: self.view.frame.minY,
-                                         width: self.view.frame.size.width,
-                                         height: self.view.frame.size.height)
+                self.view.frame = self.presenter.currentFrame
             }
         default:
             print()
