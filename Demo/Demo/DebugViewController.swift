@@ -8,14 +8,55 @@
 
 import UIKit
 
-class DebugViewController: UITableViewController {
-    private var presenter: DebugMenuPresenter
+protocol DebugMenuContainer: UIViewController,
+    DebugMenuDelegate,
+    DebugMenuDataSource,
+    UIGestureRecognizerDelegate {
+    
+    var debugViewController: DebugViewController! { get set }
+    var containerView: UIView { get }
+    
+    func setupDebugMenu()
+}
 
+extension DebugMenuContainer {
+    
+    func setupDebugMenu() {
+        view.addSubview(containerView)
+        
+        debugViewController = DebugViewController(menuSize: containerView.bounds.size)
+        
+        addChild(debugViewController)
+        containerView.addSubview(debugViewController.view)
+        debugViewController.didMove(toParent: self)
+        
+        debugViewController.view.frame = containerView.bounds
+        debugViewController.panGestureDelegate = self
+        debugViewController.debugMenuDelegate = self
+        debugViewController.debugMenuDataSource = self
+    }
+    
+}
+
+protocol DebugMenuDelegate: AnyObject {    
+    func debugViewController(_ debugViewController: DebugViewController, requestShowing: Bool)
+    func debugViewController(_ debugViewController: DebugViewController, requestHiding: Bool)
+}
+
+protocol DebugMenuDataSource: AnyObject {
+    func debugItems(in debugViewController: DebugViewController) -> [DebugItem]
+}
+
+class DebugViewController: UITableViewController {
+    
+    var animationDuration: Double = 0.15
+    weak var panGestureDelegate: UIGestureRecognizerDelegate?
+    weak var debugMenuDelegate: DebugMenuDelegate?
+    weak var debugMenuDataSource: DebugMenuDataSource?
+
+    private var presenter: DebugMenuPresenter
     private var edgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer!
     private var panGestureRecognizer: UIPanGestureRecognizer!
-    weak var panGestureDelegate: UIGestureRecognizerDelegate?
-    
-    var debugItems: [DebugItem] = []
     private let reuseIdentifer = "cell"
     
     init(menuSize: CGSize) {
@@ -48,6 +89,11 @@ class DebugViewController: UITableViewController {
         
         switch recognizer.state {
         case .began:
+            if !presenter.isShown {
+                let requestShowing = parent == nil
+                debugMenuDelegate?.debugViewController(self, requestShowing: requestShowing)
+            }
+
             let location = recognizer.location(in: view)
             presenter.began(from: location.x)
             
@@ -55,7 +101,7 @@ class DebugViewController: UITableViewController {
             let location = recognizer.location(in: view)
             presenter.move(to: location.x)
             
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: animationDuration) {
                 self.view.superview?.frame = self.presenter.currentFrame
             }
             
@@ -63,8 +109,15 @@ class DebugViewController: UITableViewController {
             let translation = recognizer.translation(in: view)
             presenter.fit(by: translation.x)
             
-            UIView.animate(withDuration: 0.1) {
-                self.view.superview?.frame = self.presenter.currentFrame
+            UIView.animate(withDuration: animationDuration,
+                           animations: {
+                            self.view.superview?.frame = self.presenter.currentFrame
+            }) { [weak self] (finished) in
+                guard let self = self, !self.presenter.isShown else { return }
+                if !self.presenter.isShown {
+                    let requestHiding = self.parent != nil
+                    self.debugMenuDelegate?.debugViewController(self, requestHiding: requestHiding)
+                }
             }
             
         @unknown default:
@@ -76,22 +129,20 @@ class DebugViewController: UITableViewController {
 
 // MARK: UITableView DataSource
 extension DebugViewController {
-    
-    // MARK: - Table view data source
-    
+        
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return debugItems.count
+        return debugMenuDataSource?.debugItems(in: self).count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let debugItem = debugItems[indexPath.row]
+        let debugItem = debugMenuDataSource?.debugItems(in: self)[indexPath.row]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifer)
-        cell.textLabel?.text = debugItem.title
-        cell.detailTextLabel?.text = debugItem.subTitle
+        cell.textLabel?.text = debugItem?.title
+        cell.detailTextLabel?.text = debugItem?.subTitle
         return cell
     }
 
@@ -101,7 +152,7 @@ extension DebugViewController {
 extension DebugViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let debugItem = debugItems[indexPath.row]
+        guard let debugItem = debugMenuDataSource?.debugItems(in: self)[indexPath.row] else { return }
         
         switch debugItem.debugAction {
         case .transition(let viewController):

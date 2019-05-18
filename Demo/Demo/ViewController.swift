@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var debugViewController: DebugViewController!
+    var debugViewController: DebugViewController!
     
-    private let containerView: UIView = {
+    let containerView: UIView = {
         let debugMenuWidthMultiplier: CGFloat = 0.8
         let screenBounds = UIScreen.main.bounds
         let width = screenBounds.width * debugMenuWidthMultiplier
@@ -27,18 +27,35 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .groupTableViewBackground
         
-        view.addSubview(containerView)
-        
-        debugViewController = DebugViewController(menuSize: containerView.bounds.size)
-        
+        setupDebugMenu()
+    }
+    
+}
+
+extension ViewController: UIGestureRecognizerDelegate { }
+
+extension ViewController: DebugMenuDelegate {
+    
+    func debugViewController(_ debugViewController: DebugViewController, requestShowing: Bool) {
+        guard requestShowing else { return }
         addChild(debugViewController)
         containerView.addSubview(debugViewController.view)
         debugViewController.didMove(toParent: self)
-        
-        debugViewController.view.frame = containerView.bounds
-        debugViewController.panGestureDelegate = self
-        
-        let sampleItems: [DebugItem] = [
+    }
+    
+    func debugViewController(_ debugViewController: DebugViewController, requestHiding: Bool) {
+        guard requestHiding else { return }
+        debugViewController.willMove(toParent: nil)
+        debugViewController.view.removeFromSuperview()
+        debugViewController.removeFromParent()
+    }
+
+}
+
+extension ViewController: DebugMenuDataSource {
+    
+    func debugItems(in debugViewController: DebugViewController) -> [DebugItem] {
+        let debugItems: [DebugItem] = [
             DebugItem(title: "title1",
                       subTitle: "subtitle1",
                       debugAction: .selectedAction( { print("hello world1") })),
@@ -46,9 +63,9 @@ class ViewController: UIViewController {
                       subTitle: "subtitle2",
                       debugAction: .selectedAction( { print("hello world2") }))
         ]
-        debugViewController.debugItems = sampleItems
+        return debugItems
     }
     
 }
 
-extension ViewController: UIGestureRecognizerDelegate { }
+extension ViewController: DebugMenuContainer { }
