@@ -11,22 +11,26 @@ import UIKit
 /// presentation logic for Debug Menu.
 struct DebugMenuPresenter {
     
-    /// initial frame of menu.
-    let sourceFrame: CGRect
+    /// lower limit frame of menu.
+    let lowerLimitFrame: CGRect
     
-    /// threshold to open or close menu. The value is in 0...1
-    var threshold: CGFloat = 0.3
+    /// upper limit frame of menu.
+    let upperLimitFrame: CGRect
     
     /// current framw of menu.
     var currentFrame: CGRect
+
+    /// threshold to open or close menu. The value is in 0...1
+    var threshold: CGFloat = 0.3
     
     /// the x point that you start dragging.
     private(set) var beganLocationX: CGFloat = 0
     
     init(sourceSize: CGSize) {
-        self.sourceFrame = CGRect(origin: CGPoint(x: -sourceSize.width, y: 0),
+        self.lowerLimitFrame = CGRect(origin: CGPoint(x: -sourceSize.width, y: 0),
                                   size: sourceSize)
-        self.currentFrame = sourceFrame
+        self.upperLimitFrame = lowerLimitFrame.prototype(withX: 0)
+        self.currentFrame = lowerLimitFrame
     }
     
     /// store start position of pan.
@@ -36,20 +40,20 @@ struct DebugMenuPresenter {
         beganLocationX = locationX
     }
     
-    /// change current frame. point x is in 0...sourceFrame.minX.
+    /// change current frame. point x is in 0...lowerLimitFrame.minX.
     ///
     /// - Parameter locationX: location x to move
     mutating func move(to locationX: CGFloat) {
-        let distance = beganLocationX - locationX
-        let destinationX = currentFrame.minX - distance
+        let panDistance = beganLocationX - locationX
+        let destinationFrameX = currentFrame.minX - panDistance
         
         let minX: CGFloat = {
-            if destinationX < sourceFrame.minX {
-                return sourceFrame.minX
-            } else if destinationX > sourceFrame.maxX {
-                return 0
+            if destinationFrameX < lowerLimitFrame.minX {
+                return lowerLimitFrame.minX
+            } else if destinationFrameX > upperLimitFrame.minX {
+                return upperLimitFrame.minX
             } else {
-                 return destinationX
+                 return destinationFrameX
             }
         }()
         
@@ -64,18 +68,18 @@ struct DebugMenuPresenter {
         
         switch direction {
         case .left:
-            let totalMoved = sourceFrame.width - currentFrame.maxX
-            if totalMoved >= (sourceFrame.width * threshold) {
-                currentFrame = currentFrame.prototype(withX: sourceFrame.minX)
+            let distanceFromStartEdge = upperLimitFrame.maxX - currentFrame.maxX
+            if distanceFromStartEdge >= (lowerLimitFrame.width * threshold) {
+                currentFrame = currentFrame.prototype(withX: lowerLimitFrame.minX)
             } else {
                 currentFrame = currentFrame.prototype(withX: 0)
             }
         case .right:
-            let totalMoved = currentFrame.minX - sourceFrame.minX
-            if totalMoved >= (sourceFrame.width * threshold) {
+            let distanceFromEndEdge = currentFrame.minX - lowerLimitFrame.minX
+            if distanceFromEndEdge >= (lowerLimitFrame.width * threshold) {
                 currentFrame = currentFrame.prototype(withX: 0)
             } else {
-                currentFrame = currentFrame.prototype(withX: sourceFrame.minX)
+                currentFrame = currentFrame.prototype(withX: lowerLimitFrame.minX)
             }
         }
     }
@@ -101,7 +105,7 @@ struct DebugMenuPresenter {
 
 private extension CGRect {
     
-    /// Clone instance with specific x value.
+    /// clone instance with given x value.
     ///
     /// - Parameter x: CGPoint x value.
     /// - Returns: new CGRect instance
