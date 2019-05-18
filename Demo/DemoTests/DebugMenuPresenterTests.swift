@@ -72,7 +72,7 @@ class DebugMenuPresenterTests: XCTestCase {
         var debugMenuPresenter = DebugMenuPresenter(sourceSize: CGSize(width: 300, height: 500))
         debugMenuPresenter.threshold = 0.2
         debugMenuPresenter.move(to: 70)
-        debugMenuPresenter.end(translationX: 80)
+        debugMenuPresenter.fit(by: 80)
         XCTAssertEqual(debugMenuPresenter.currentFrame.minX, 0)
     }
     
@@ -80,7 +80,7 @@ class DebugMenuPresenterTests: XCTestCase {
         var debugMenuPresenter = DebugMenuPresenter(sourceSize: CGSize(width: 300, height: 500))
         debugMenuPresenter.threshold = 0.2
         debugMenuPresenter.move(to: 60)
-        debugMenuPresenter.end(translationX: 70)
+        debugMenuPresenter.fit(by: 70)
         XCTAssertEqual(debugMenuPresenter.currentFrame.minX, 0)
     }
 
@@ -89,7 +89,7 @@ class DebugMenuPresenterTests: XCTestCase {
         var debugMenuPresenter = DebugMenuPresenter(sourceSize: CGSize(width: 300, height: 500))
         debugMenuPresenter.threshold = 0.2
         debugMenuPresenter.move(to: 59)
-        debugMenuPresenter.end(translationX: 60)
+        debugMenuPresenter.fit(by: 60)
         XCTAssertEqual(debugMenuPresenter.currentFrame.minX, -300)
     }
 
@@ -102,7 +102,7 @@ class DebugMenuPresenterTests: XCTestCase {
         debugMenuPresenter.move(to: 230)
         XCTAssertEqual(debugMenuPresenter.currentFrame.maxX, 230)
         
-        debugMenuPresenter.end(translationX: -1)
+        debugMenuPresenter.fit(by: -1)
         XCTAssertEqual(debugMenuPresenter.currentFrame.minX, -300)
     }
     
@@ -113,7 +113,7 @@ class DebugMenuPresenterTests: XCTestCase {
         debugMenuPresenter.currentFrame = CGRect(origin: .zero,
                                                  size: debugMenuPresenter.currentFrame.size)
         debugMenuPresenter.move(to: 240)
-        debugMenuPresenter.end(translationX: -1)
+        debugMenuPresenter.fit(by: -1)
         XCTAssertEqual(debugMenuPresenter.currentFrame.minX, -300)
     }
 
@@ -124,7 +124,7 @@ class DebugMenuPresenterTests: XCTestCase {
         debugMenuPresenter.currentFrame = CGRect(origin: .zero,
                                                  size: debugMenuPresenter.currentFrame.size)
         debugMenuPresenter.move(to: 241)
-        debugMenuPresenter.end(translationX: -1)
+        debugMenuPresenter.fit(by: -1)
         XCTAssertEqual(debugMenuPresenter.currentFrame.minX, 0)
     }
     

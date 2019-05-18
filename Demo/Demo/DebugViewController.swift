@@ -70,7 +70,7 @@ class DebugViewController: UITableViewController {
                 self.view.superview?.frame = self.presenter.currentFrame
             }
         case .ended, .cancelled, .failed, .possible:
-            presenter.end(translationX: translation.x)
+            presenter.fit(by: translation.x)
             
             UIView.animate(withDuration: 0.1) {
                 self.view.superview?.frame = self.presenter.currentFrame

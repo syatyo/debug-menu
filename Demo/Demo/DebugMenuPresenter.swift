@@ -8,19 +8,19 @@
 
 import UIKit
 
-/// Presentation logic of Debug Menu.
+/// presentation logic for Debug Menu.
 struct DebugMenuPresenter {
     
-    /// Initial frame of menu.
+    /// initial frame of menu.
     let sourceFrame: CGRect
     
-    /// Threshold to open or close menu. The value is in 0...1
+    /// threshold to open or close menu. The value is in 0...1
     var threshold: CGFloat = 0.3
     
-    /// Current framw of menu.
+    /// current framw of menu.
     var currentFrame: CGRect
     
-    /// The x point that you start dragging.
+    /// the x point that you start dragging.
     private(set) var beganLocationX: CGFloat = 0
     
     init(sourceSize: CGSize) {
@@ -29,13 +29,19 @@ struct DebugMenuPresenter {
         self.currentFrame = sourceFrame
     }
     
-    mutating func began(from locationMinX: CGFloat) {
-        beganLocationX = locationMinX
+    /// store start position of pan.
+    ///
+    /// - Parameter locationMinX: Position x to store.
+    mutating func began(from locationX: CGFloat) {
+        beganLocationX = locationX
     }
     
+    /// change current frame. point x is in 0...sourceFrame.minX.
+    ///
+    /// - Parameter locationX: location x to move
     mutating func move(to locationX: CGFloat) {
-        let distance = (beganLocationX - locationX) * -1
-        let destinationX = currentFrame.minX + distance
+        let distance = beganLocationX - locationX
+        let destinationX = currentFrame.minX - distance
         
         let minX: CGFloat = {
             if destinationX < sourceFrame.minX {
@@ -50,8 +56,11 @@ struct DebugMenuPresenter {
         currentFrame = currentFrame.prototype(withX: minX)
     }
     
-    mutating func end(translationX: CGFloat) {
-        let direction = Direction(translationX: translationX)
+    /// fit current frame by pan state.
+    ///
+    /// - Parameter translationX: translation point x to distinguish direction.
+    mutating func fit(by translationX: CGFloat) {
+        let direction = PanDirection(translationX: translationX)
         
         switch direction {
         case .left:
@@ -71,7 +80,11 @@ struct DebugMenuPresenter {
         }
     }
     
-    private enum Direction {
+    /// pan direction
+    ///
+    /// - left: pan to left
+    /// - right: pan to right
+    private enum PanDirection {
         case left
         case right
         
