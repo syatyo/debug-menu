@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1811F84D22907C4500C98324 /* DebugItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811F84C22907C4500C98324 /* DebugItem.swift */; };
 		18990149228F1D4D003157CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18990148228F1D4D003157CA /* AppDelegate.swift */; };
 		1899014B228F1D4D003157CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899014A228F1D4D003157CA /* ViewController.swift */; };
 		1899014E228F1D4D003157CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1899014C228F1D4D003157CA /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1811F84C22907C4500C98324 /* DebugItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugItem.swift; sourceTree = "<group>"; };
 		18990145228F1D4D003157CA /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18990148228F1D4D003157CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1899014A228F1D4D003157CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				1899014A228F1D4D003157CA /* ViewController.swift */,
 				1899015A228F2445003157CA /* DebugViewController.swift */,
 				1899016E228FAFB0003157CA /* DebugMenuPresenter.swift */,
+				1811F84C22907C4500C98324 /* DebugItem.swift */,
 				1899014C228F1D4D003157CA /* Main.storyboard */,
 				1899014F228F1D4E003157CA /* Assets.xcassets */,
 				18990151228F1D4E003157CA /* LaunchScreen.storyboard */,
@@ -210,6 +213,7 @@
 				1899014B228F1D4D003157CA /* ViewController.swift in Sources */,
 				18990149228F1D4D003157CA /* AppDelegate.swift in Sources */,
 				1899016F228FAFB0003157CA /* DebugMenuPresenter.swift in Sources */,
+				1811F84D22907C4500C98324 /* DebugItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,9 +25,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .groupTableViewBackground
         
         view.addSubview(containerView)
-        containerView.backgroundColor = .yellow
         
         debugViewController = DebugViewController(menuSize: containerView.bounds.size)
         
@@ -37,13 +37,18 @@ class ViewController: UIViewController {
         
         debugViewController.view.frame = containerView.bounds
         debugViewController.panGestureDelegate = self
+        
+        let sampleItems: [DebugItem] = [
+            DebugItem(title: "title1",
+                      subTitle: "subtitle1",
+                      debugAction: .selectedAction( { print("hello world1") })),
+            DebugItem(title: "title2",
+                      subTitle: "subtitle2",
+                      debugAction: .selectedAction( { print("hello world2") }))
+        ]
+        debugViewController.debugItems = sampleItems
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        assert(view.bounds.width > containerView.bounds.width)
-    }
 }
 
 extension ViewController: UIGestureRecognizerDelegate { }
