@@ -9,10 +9,20 @@
 import UIKit
 
 class DebugViewController: UITableViewController {
-    
+    private var presenter: DebugMenuPresenter
+
     private var edgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer!
     private var panGestureRecognizer: UIPanGestureRecognizer!
     weak var panGestureDelegate: UIGestureRecognizerDelegate?
+    
+    init(menuSize: CGSize) {
+        presenter = DebugMenuPresenter(sourceSize: menuSize)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +38,8 @@ class DebugViewController: UITableViewController {
         panGestureRecognizer = UIPanGestureRecognizer(target: self,
                                                       action: #selector(panGestureRecognizerDidPanned(recognizer:)))
         panGestureRecognizer.delegate = panGestureDelegate
-        parent?.view.addGestureRecognizer(panGestureRecognizer)
+        view.addGestureRecognizer(panGestureRecognizer)
         
-        presenter = DebugMenuPresenter(sourceSize: view.bounds.size)
     }
 
     // MARK: - Table view data source
@@ -44,24 +53,30 @@ class DebugViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
-    private var presenter: DebugMenuPresenter!
     
     @objc private func panGestureRecognizerDidPanned(recognizer: UIScreenEdgePanGestureRecognizer) {
         
+        let location = recognizer.location(in: view)
+        let translation = recognizer.translation(in: view)
+        
         switch recognizer.state {
         case .began:
-            let location = recognizer.location(in: view)
-            presenter.began(in: location)
+            print(location)
+            presenter.began(from: location.x)
         case .changed:
-            let location = recognizer.location(in: view)
-            presenter.change(in: location)
+            presenter.move(to: location.x)
             
             UIView.animate(withDuration: 0.1) {
-                self.view.frame = self.presenter.currentFrame
+                self.view.superview?.frame = self.presenter.currentFrame
             }
-        default:
-            print()
+        case .ended, .cancelled, .failed, .possible:
+            presenter.end(translationX: translation.x)
+            
+            UIView.animate(withDuration: 0.1) {
+                self.view.superview?.frame = self.presenter.currentFrame
+            }
+        @unknown default:
+            fatalError()
         }
     }
     
