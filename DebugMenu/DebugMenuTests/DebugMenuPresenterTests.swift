@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Demo
+@testable import DebugMenu
 
 class DebugMenuPresenterTests: XCTestCase {
     

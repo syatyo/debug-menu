@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DebugMenu
 
 class ViewController: UIViewController {
     
