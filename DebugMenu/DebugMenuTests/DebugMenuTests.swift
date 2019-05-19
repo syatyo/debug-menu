@@ -1,15 +1,15 @@
 //
-//  debug_menuTests.swift
-//  debug-menuTests
+//  DebugMenuTests.swift
+//  DebugMenuTests
 //
-//  Created by syatyo on 2019/05/18.
+//  Created by syatyo on 2019/05/20.
 //  Copyright © 2019 syatyo. All rights reserved.
 //
 
 import XCTest
-@testable import debug_menu
+@testable import DebugMenu
 
-class debug_menuTests: XCTestCase {
+class DebugMenuTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

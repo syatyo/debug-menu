@@ -9,7 +9,7 @@
 import UIKit
 
 /// Debug item that listed in Debug Menu.
-struct DebugItem {
+public struct DebugItem {
     
     /// title for textLabel.
     let title: String
@@ -24,9 +24,15 @@ struct DebugItem {
     ///
     /// - transition: destination ViewController for transition.
     /// - selectedAction->Void: any action you want to execute.
-    enum DebugAction {
+    public enum DebugAction {
         case transition(UIViewController)
         case selectedAction(() -> Void)
+    }
+    
+    public init(title: String, subTitle: String, debugAction: DebugAction) {
+        self.title = title
+        self.subTitle = subTitle
+        self.debugAction = debugAction
     }
     
 }

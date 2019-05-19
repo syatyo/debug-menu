@@ -7,180 +7,193 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1899012C228F1B3E003157CA /* debug_menu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18990122228F1B3E003157CA /* debug_menu.framework */; };
-		18990131228F1B3E003157CA /* debug_menuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18990130228F1B3E003157CA /* debug_menuTests.swift */; };
-		18990133228F1B3E003157CA /* debug_menu.h in Headers */ = {isa = PBXBuildFile; fileRef = 18990125228F1B3E003157CA /* debug_menu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1811F8742291AEC900C98324 /* DebugMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1811F86A2291AEC900C98324 /* DebugMenu.framework */; };
+		1811F8792291AEC900C98324 /* DebugMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811F8782291AEC900C98324 /* DebugMenuTests.swift */; };
+		1811F87B2291AEC900C98324 /* DebugMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 1811F86D2291AEC900C98324 /* DebugMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1811F8872291B04E00C98324 /* DebugItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811F8842291B04E00C98324 /* DebugItem.swift */; };
+		1811F8882291B04E00C98324 /* DebugMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811F8852291B04E00C98324 /* DebugMenuPresenter.swift */; };
+		1811F8892291B04E00C98324 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811F8862291B04E00C98324 /* DebugViewController.swift */; };
+		1811F88B2291B05600C98324 /* DebugMenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811F88A2291B05600C98324 /* DebugMenuPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1899012D228F1B3E003157CA /* PBXContainerItemProxy */ = {
+		1811F8752291AEC900C98324 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 18990119228F1B3E003157CA /* Project object */;
+			containerPortal = 1811F8612291AEC900C98324 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 18990121228F1B3E003157CA;
-			remoteInfo = "debug-menu";
+			remoteGlobalIDString = 1811F8692291AEC900C98324;
+			remoteInfo = DebugMenu;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18990122228F1B3E003157CA /* debug_menu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = debug_menu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		18990125228F1B3E003157CA /* debug_menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debug_menu.h; sourceTree = "<group>"; };
-		18990126228F1B3E003157CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1899012B228F1B3E003157CA /* debug-menuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "debug-menuTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		18990130228F1B3E003157CA /* debug_menuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debug_menuTests.swift; sourceTree = "<group>"; };
-		18990132228F1B3E003157CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1811F86A2291AEC900C98324 /* DebugMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DebugMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1811F86D2291AEC900C98324 /* DebugMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugMenu.h; sourceTree = "<group>"; };
+		1811F86E2291AEC900C98324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1811F8732291AEC900C98324 /* DebugMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebugMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1811F8782291AEC900C98324 /* DebugMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuTests.swift; sourceTree = "<group>"; };
+		1811F87A2291AEC900C98324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1811F8842291B04E00C98324 /* DebugItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugItem.swift; sourceTree = "<group>"; };
+		1811F8852291B04E00C98324 /* DebugMenuPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuPresenter.swift; sourceTree = "<group>"; };
+		1811F8862291B04E00C98324 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		1811F88A2291B05600C98324 /* DebugMenuPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1899011F228F1B3E003157CA /* Frameworks */ = {
+		1811F8672291AEC900C98324 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18990128228F1B3E003157CA /* Frameworks */ = {
+		1811F8702291AEC900C98324 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1899012C228F1B3E003157CA /* debug_menu.framework in Frameworks */,
+				1811F8742291AEC900C98324 /* DebugMenu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18990118228F1B3E003157CA = {
+		1811F8602291AEC900C98324 = {
 			isa = PBXGroup;
 			children = (
-				18990124228F1B3E003157CA /* debug-menu */,
-				1899012F228F1B3E003157CA /* debug-menuTests */,
-				18990123228F1B3E003157CA /* Products */,
+				1811F86C2291AEC900C98324 /* DebugMenu */,
+				1811F8772291AEC900C98324 /* DebugMenuTests */,
+				1811F86B2291AEC900C98324 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		18990123228F1B3E003157CA /* Products */ = {
+		1811F86B2291AEC900C98324 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18990122228F1B3E003157CA /* debug_menu.framework */,
-				1899012B228F1B3E003157CA /* debug-menuTests.xctest */,
+				1811F86A2291AEC900C98324 /* DebugMenu.framework */,
+				1811F8732291AEC900C98324 /* DebugMenuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		18990124228F1B3E003157CA /* debug-menu */ = {
+		1811F86C2291AEC900C98324 /* DebugMenu */ = {
 			isa = PBXGroup;
 			children = (
-				18990125228F1B3E003157CA /* debug_menu.h */,
-				18990126228F1B3E003157CA /* Info.plist */,
+				1811F86D2291AEC900C98324 /* DebugMenu.h */,
+				1811F8842291B04E00C98324 /* DebugItem.swift */,
+				1811F8852291B04E00C98324 /* DebugMenuPresenter.swift */,
+				1811F8862291B04E00C98324 /* DebugViewController.swift */,
+				1811F86E2291AEC900C98324 /* Info.plist */,
 			);
-			path = "debug-menu";
+			path = DebugMenu;
 			sourceTree = "<group>";
 		};
-		1899012F228F1B3E003157CA /* debug-menuTests */ = {
+		1811F8772291AEC900C98324 /* DebugMenuTests */ = {
 			isa = PBXGroup;
 			children = (
-				18990130228F1B3E003157CA /* debug_menuTests.swift */,
-				18990132228F1B3E003157CA /* Info.plist */,
+				1811F8782291AEC900C98324 /* DebugMenuTests.swift */,
+				1811F88A2291B05600C98324 /* DebugMenuPresenterTests.swift */,
+				1811F87A2291AEC900C98324 /* Info.plist */,
 			);
-			path = "debug-menuTests";
+			path = DebugMenuTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1899011D228F1B3E003157CA /* Headers */ = {
+		1811F8652291AEC900C98324 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18990133228F1B3E003157CA /* debug_menu.h in Headers */,
+				1811F87B2291AEC900C98324 /* DebugMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		18990121228F1B3E003157CA /* debug-menu */ = {
+		1811F8692291AEC900C98324 /* DebugMenu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18990136228F1B3E003157CA /* Build configuration list for PBXNativeTarget "debug-menu" */;
+			buildConfigurationList = 1811F87E2291AEC900C98324 /* Build configuration list for PBXNativeTarget "DebugMenu" */;
 			buildPhases = (
-				1899011D228F1B3E003157CA /* Headers */,
-				1899011E228F1B3E003157CA /* Sources */,
-				1899011F228F1B3E003157CA /* Frameworks */,
-				18990120228F1B3E003157CA /* Resources */,
+				1811F8652291AEC900C98324 /* Headers */,
+				1811F8662291AEC900C98324 /* Sources */,
+				1811F8672291AEC900C98324 /* Frameworks */,
+				1811F8682291AEC900C98324 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "debug-menu";
-			productName = "debug-menu";
-			productReference = 18990122228F1B3E003157CA /* debug_menu.framework */;
+			name = DebugMenu;
+			productName = DebugMenu;
+			productReference = 1811F86A2291AEC900C98324 /* DebugMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1899012A228F1B3E003157CA /* debug-menuTests */ = {
+		1811F8722291AEC900C98324 /* DebugMenuTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18990139228F1B3E003157CA /* Build configuration list for PBXNativeTarget "debug-menuTests" */;
+			buildConfigurationList = 1811F8812291AEC900C98324 /* Build configuration list for PBXNativeTarget "DebugMenuTests" */;
 			buildPhases = (
-				18990127228F1B3E003157CA /* Sources */,
-				18990128228F1B3E003157CA /* Frameworks */,
-				18990129228F1B3E003157CA /* Resources */,
+				1811F86F2291AEC900C98324 /* Sources */,
+				1811F8702291AEC900C98324 /* Frameworks */,
+				1811F8712291AEC900C98324 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1899012E228F1B3E003157CA /* PBXTargetDependency */,
+				1811F8762291AEC900C98324 /* PBXTargetDependency */,
 			);
-			name = "debug-menuTests";
-			productName = "debug-menuTests";
-			productReference = 1899012B228F1B3E003157CA /* debug-menuTests.xctest */;
+			name = DebugMenuTests;
+			productName = DebugMenuTests;
+			productReference = 1811F8732291AEC900C98324 /* DebugMenuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		18990119228F1B3E003157CA /* Project object */ = {
+		1811F8612291AEC900C98324 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "山田良治";
 				TargetAttributes = {
-					18990121228F1B3E003157CA = {
+					1811F8692291AEC900C98324 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
-					1899012A228F1B3E003157CA = {
+					1811F8722291AEC900C98324 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
 			};
-			buildConfigurationList = 1899011C228F1B3E003157CA /* Build configuration list for PBXProject "debug-menu" */;
+			buildConfigurationList = 1811F8642291AEC900C98324 /* Build configuration list for PBXProject "DebugMenu" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 18990118228F1B3E003157CA;
-			productRefGroup = 18990123228F1B3E003157CA /* Products */;
+			mainGroup = 1811F8602291AEC900C98324;
+			productRefGroup = 1811F86B2291AEC900C98324 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				18990121228F1B3E003157CA /* debug-menu */,
-				1899012A228F1B3E003157CA /* debug-menuTests */,
+				1811F8692291AEC900C98324 /* DebugMenu */,
+				1811F8722291AEC900C98324 /* DebugMenuTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		18990120228F1B3E003157CA /* Resources */ = {
+		1811F8682291AEC900C98324 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18990129228F1B3E003157CA /* Resources */ = {
+		1811F8712291AEC900C98324 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,33 +203,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1899011E228F1B3E003157CA /* Sources */ = {
+		1811F8662291AEC900C98324 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1811F8892291B04E00C98324 /* DebugViewController.swift in Sources */,
+				1811F8872291B04E00C98324 /* DebugItem.swift in Sources */,
+				1811F8882291B04E00C98324 /* DebugMenuPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18990127228F1B3E003157CA /* Sources */ = {
+		1811F86F2291AEC900C98324 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18990131228F1B3E003157CA /* debug_menuTests.swift in Sources */,
+				1811F8792291AEC900C98324 /* DebugMenuTests.swift in Sources */,
+				1811F88B2291B05600C98324 /* DebugMenuPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1899012E228F1B3E003157CA /* PBXTargetDependency */ = {
+		1811F8762291AEC900C98324 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 18990121228F1B3E003157CA /* debug-menu */;
-			targetProxy = 1899012D228F1B3E003157CA /* PBXContainerItemProxy */;
+			target = 1811F8692291AEC900C98324 /* DebugMenu */;
+			targetProxy = 1811F8752291AEC900C98324 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		18990134228F1B3E003157CA /* Debug */ = {
+		1811F87C2291AEC900C98324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,7 +297,7 @@
 			};
 			name = Debug;
 		};
-		18990135228F1B3E003157CA /* Release */ = {
+		1811F87D2291AEC900C98324 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -338,88 +355,91 @@
 			};
 			name = Release;
 		};
-		18990137228F1B3E003157CA /* Debug */ = {
+		1811F87F2291AEC900C98324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z5DLXLSS2U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "debug-menu/Info.plist";
+				INFOPLIST_FILE = DebugMenu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.raiso.debug-menu";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.raiso.DebugMenu;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		18990138228F1B3E003157CA /* Release */ = {
+		1811F8802291AEC900C98324 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z5DLXLSS2U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "debug-menu/Info.plist";
+				INFOPLIST_FILE = DebugMenu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.raiso.debug-menu";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.raiso.DebugMenu;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		1899013A228F1B3E003157CA /* Debug */ = {
+		1811F8822291AEC900C98324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z5DLXLSS2U;
-				INFOPLIST_FILE = "debug-menuTests/Info.plist";
+				INFOPLIST_FILE = DebugMenuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.raiso.debug-menuTests";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.raiso.DebugMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		1899013B228F1B3E003157CA /* Release */ = {
+		1811F8832291AEC900C98324 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z5DLXLSS2U;
-				INFOPLIST_FILE = "debug-menuTests/Info.plist";
+				INFOPLIST_FILE = DebugMenuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.raiso.debug-menuTests";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.raiso.DebugMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,34 +449,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1899011C228F1B3E003157CA /* Build configuration list for PBXProject "debug-menu" */ = {
+		1811F8642291AEC900C98324 /* Build configuration list for PBXProject "DebugMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				18990134228F1B3E003157CA /* Debug */,
-				18990135228F1B3E003157CA /* Release */,
+				1811F87C2291AEC900C98324 /* Debug */,
+				1811F87D2291AEC900C98324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18990136228F1B3E003157CA /* Build configuration list for PBXNativeTarget "debug-menu" */ = {
+		1811F87E2291AEC900C98324 /* Build configuration list for PBXNativeTarget "DebugMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				18990137228F1B3E003157CA /* Debug */,
-				18990138228F1B3E003157CA /* Release */,
+				1811F87F2291AEC900C98324 /* Debug */,
+				1811F8802291AEC900C98324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18990139228F1B3E003157CA /* Build configuration list for PBXNativeTarget "debug-menuTests" */ = {
+		1811F8812291AEC900C98324 /* Build configuration list for PBXNativeTarget "DebugMenuTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1899013A228F1B3E003157CA /* Debug */,
-				1899013B228F1B3E003157CA /* Release */,
+				1811F8822291AEC900C98324 /* Debug */,
+				1811F8832291AEC900C98324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 18990119228F1B3E003157CA /* Project object */;
+	rootObject = 1811F8612291AEC900C98324 /* Project object */;
 }
