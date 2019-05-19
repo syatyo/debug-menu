@@ -1,0 +1,11 @@
+framework module DebugMenu {
+  umbrella header "DebugMenu.h"
+
+  export *
+  module * { export * }
+}
+
+module DebugMenu.Swift {
+    header "DebugMenu-Swift.h"
+    requires objc
+}
