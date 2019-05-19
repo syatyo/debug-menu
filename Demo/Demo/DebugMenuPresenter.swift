@@ -45,7 +45,7 @@ struct DebugMenuPresenter {
         beganLocationX = locationX
     }
     
-    /// change current frame. point x is in 0...lowerLimitFrame.minX.
+    /// change current frame. point x is in 0...upperLimitFrame.minX.
     ///
     /// - Parameter locationX: location x to move
     mutating func move(to locationX: CGFloat) {
@@ -53,9 +53,12 @@ struct DebugMenuPresenter {
         let destinationFrameX = currentFrame.minX - panDistance
         
         let minX: CGFloat = {
-            if destinationFrameX < lowerLimitFrame.minX {
+            let isBelowLowerLimit = destinationFrameX < lowerLimitFrame.minX
+            let isOverUppserLimit = destinationFrameX > upperLimitFrame.minX
+            
+            if isBelowLowerLimit {
                 return lowerLimitFrame.minX
-            } else if destinationFrameX > upperLimitFrame.minX {
+            } else if isOverUppserLimit {
                 return upperLimitFrame.minX
             } else {
                  return destinationFrameX
@@ -65,7 +68,7 @@ struct DebugMenuPresenter {
         currentFrame = currentFrame.prototype(withX: minX)
     }
     
-    /// fit current frame by pan state.
+    /// fit current frame to edge by pan state.
     ///
     /// - Parameter translationX: translation point x to distinguish direction.
     mutating func fit(by translationX: CGFloat) {
