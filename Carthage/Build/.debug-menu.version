@@ -8,11 +8,11 @@
   "tvOS" : [
 
   ],
-  "commitish" : "bcaaad96f93f90534963ac1d50bf76c9df10ac81",
+  "commitish" : "79f967ca793233689d7a7f0648291b56df018b03",
   "iOS" : [
     {
       "name" : "DebugMenu",
-      "hash" : "0bb9365ad352c42affb24908ca4a2572e9ee9628f5888a978e3d8230719cea3c",
+      "hash" : "cb32f275f7b96694dc06b8bae505479485a8432395bbbb1b992eaac56881984f",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]
